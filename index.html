@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucra — 30 Qualified Sales Calls in 60 Days</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #ffffff;
+      --bg-warm:   #faf8f5;
+      --bg-tan:    #f2ede4;
+      --bg-dark:   #07001f;
+      --bg-dark2:  #0d0b20;
+      --text:      #0d0c18;
+      --text-mid:  #3a3650;
+      --text-muted:#7b7890;
+      --orange:    #f87b28;
+      --coral:     #ef4551;
+      --magenta:   #d91b7b;
+      --violet:    #8b32c4;
+      --grad:      linear-gradient(135deg, #f87b28 0%, #ef4551 35%, #d91b7b 65%, #8b32c4 100%);
+      --grad-text: linear-gradient(120deg, #f87b28 0%, #ef4551 40%, #d91b7b 70%, #8b32c4 100%);
+      --green-pill:#14b86a;
+      --border:    rgba(13,12,24,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Figtree', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .heading { font-family: 'Outfit', sans-serif; }
+
+    .grad-text {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 68px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 2px 12px rgba(248,123,40,0.35);
+    }
+
+    .btn-orange:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-orange:active { transform: translateY(0); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 9rem 2rem 5rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(248,123,40,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 80% 50%, rgba(139,50,196,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 60%, rgba(239,69,81,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ─── GUARANTEE BADGE ─── */
+    .guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #d1fae5;
+      border: 1.5px solid #6ee7b7;
+      border-radius: 100px;
+      padding: 0.55rem 1.4rem;
+      margin-bottom: 2.25rem;
+      position: relative;
+      cursor: default;
+    }
+
+    .guarantee-badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-pill);
+      flex-shrink: 0;
+      animation: blink 2s ease infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .guarantee-badge-text {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #065f46;
+      letter-spacing: -0.01em;
+    }
+
+    .guarantee-badge-text strong {
+      font-weight: 900;
+      font-size: 1.05rem;
+    }
+
+    /* ─── HERO HEADLINE ─── */
+    .hero h1 {
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn-primary-lg {
+      background: var(--orange);
+      color: #fff;
+      padding: 1rem 2.25rem;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 20px rgba(248,123,40,0.4);
+    }
+
+    .btn-primary-lg:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .btn-ghost-dark {
+      background: transparent;
+      color: var(--text);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-ghost-dark:hover {
+      border-color: rgba(13,12,24,0.3);
+      background: rgba(13,12,24,0.03);
+      transform: translateY(-2px);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── LOGO TICKER ─── */
+    .logo-ticker-wrap {
+      margin-top: 3.5rem;
+      width: 100%;
+    }
+
+    .logo-ticker-label {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .logo-ticker {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .logo-ticker::before,
+    .logo-ticker::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; width: 100px; z-index: 2;
+      pointer-events: none;
+    }
+
+    .logo-ticker::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+    .logo-ticker::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+
+    .logo-ticker-track {
+      display: flex;
+      gap: 7rem;
+      animation: ticker-scroll 14s linear infinite;
+      width: max-content;
+      align-items: center;
+    }
+
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .ticker-logo {
+      height: 80px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.55;
+      filter: grayscale(0.1);
+      transition: opacity 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .ticker-logo:hover { opacity: 1; }
+
+    /* ─── DASHBOARD MOCKUP ─── */
+    .hero-mockup-wrap {
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .hero-mockup-shadow {
+      position: absolute;
+      bottom: -40px; left: 10%; right: 10%;
+      height: 100px;
+      background: radial-gradient(ellipse, rgba(248,123,40,0.2) 0%, transparent 70%);
+      filter: blur(20px);
+      z-index: -1;
+    }
+
+    .hero-mockup {
+      width: 100%;
+      background: var(--bg-dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.08),
+        0 32px 80px rgba(13,12,24,0.18),
+        0 8px 20px rgba(13,12,24,0.1);
+    }
+
+    .mockup-bar {
+      background: #130f2a;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mockup-dot-r { background: #ff5f57; }
+    .mockup-dot-y { background: #febc2e; }
+    .mockup-dot-g { background: #28c840; }
+
+    .mockup-url {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.75rem;
+      color: #9895a1;
+      margin: 0 1rem;
+      text-align: center;
+    }
+
+    .mockup-body {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      min-height: 360px;
+      color: #fff;
+    }
+
+    .mockup-sidebar {
+      background: #0b0920;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 1rem;
+    }
+
+    .mockup-sidebar-logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .msb-dot { width: 8px; height: 8px; border-radius: 50%; background: #f87b28; }
+
+    .mockup-nav-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem; color: #9895a1;
+      margin-bottom: 0.2rem; cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .mockup-nav-item.active { background: rgba(248,123,40,0.15); color: #f4a76a; }
+
+    .m-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.5; }
+
+    .mockup-main { padding: 1.5rem; }
+
+    .mockup-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .mockup-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; }
+    .mockup-period { font-size: 0.72rem; color: #9895a1; background: rgba(255,255,255,0.05); padding: 0.3rem 0.7rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+
+    .mockup-stats {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-bottom: 1rem;
+    }
+
+    .m-stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 0.9rem;
+    }
+
+    .m-stat-label { font-size: 0.65rem; color: #9895a1; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; }
+    .m-stat-value { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.4rem; color: #fff; }
+    .m-stat-value.orange { color: #f4a76a; }
+    .m-stat-value.green { color: #3dfd98; }
+    .m-stat-delta { font-size: 0.65rem; color: #3dfd98; margin-top: 0.2rem; }
+
+    .mockup-chart { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1rem; height: 110px; }
+    .m-chart-label { font-size: 0.65rem; color: #9895a1; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+    .chart-bars { display: flex; align-items: flex-end; gap: 5px; height: 62px; }
+    .bar { flex: 1; border-radius: 3px 3px 0 0; }
+    .bar-purple { background: rgba(110,69,255,0.4); }
+    .bar-orange { background: var(--orange); }
+    .bar-green  { background: #3dfd98; }
+
+    /* ─── GENERIC CONTAINERS ─── */
+    .container { max-width: 1100px; margin: 0 auto; }
+    section { padding: 6rem 2rem; }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 2rem;
+    }
+
+    /* ─── EYEBROW / HEADING PATTERNS ─── */
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    .section-h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ─── GUARANTEE DARK BANNER ─── */
+    .guarantee-section {
+      background: var(--bg-dark);
+      color: #fff;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .guarantee-section h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .guarantee-section p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .guarantee-tag {
+      display: inline-block;
+      background: rgba(248,123,40,0.15);
+      border: 1px solid rgba(248,123,40,0.3);
+      color: #f4a76a;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.65rem 2rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ─── TWO COLUMN ─── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .two-col.reverse .col-left { order: 2; }
+    .two-col.reverse .col-right { order: 1; }
+
+    /* ─── FEATURE CARDS (light) ─── */
+    .feature-card-light {
+      background: var(--bg-warm);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-card-light:hover {
+      border-color: rgba(248,123,40,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(248,123,40,0.08);
+    }
+
+    .fc-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(248,123,40,0.15), rgba(239,69,81,0.1));
+      border: 1px solid rgba(248,123,40,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; margin-bottom: 1rem;
+    }
+
+    .feature-card-light h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      margin-bottom: 0.4rem; color: var(--text);
+    }
+
+    .feature-card-light p {
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.6;
+    }
+
+    .card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ─── VISUAL PANEL (light) ─── */
+    .visual-panel {
+      background: var(--bg-warm);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .visual-panel-inner { padding: 2rem; }
+
+    .vp-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(248,123,40,0.12), rgba(239,69,81,0.08));
+      border: 1px solid rgba(248,123,40,0.2);
+      color: var(--orange);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem;
+    }
+
+    .vp-metric {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900; font-size: 2.5rem;
+      letter-spacing: -0.04em; color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .vp-metric-sub { font-size: 0.85rem; color: var(--text-muted); }
+
+    .pipeline-stages {
+      display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap;
+    }
+
+    .ps {
+      flex: 1; min-width: 72px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 0.7rem;
+      text-align: center;
+    }
+
+    .ps-label { font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+    .ps-count { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--text); }
+    .ps.active .ps-count { color: var(--orange); }
+    .ps.done .ps-count { color: var(--green-pill); }
+
+    .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+
+    .mini-stat {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 0.85rem;
+    }
+
+    .mini-stat-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+    .mini-stat-value { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); }
+    .mini-stat-value.orange { color: var(--orange); }
+    .mini-stat-value.green  { color: var(--green-pill); }
+
+    /* ─── RESULT LIST ─── */
+    .result-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .result-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--bg-warm);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 0.2s ease;
+    }
+
+    .result-row:hover { border-color: rgba(248,123,40,0.3); }
+
+    .rr-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border-radius: 7px;
+      background: linear-gradient(135deg, rgba(248,123,40,0.15), rgba(239,69,81,0.08));
+      border: 1px solid rgba(248,123,40,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; margin-top: 0.1rem;
+    }
+
+    .rr-content h4 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .rr-content p  { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* ─── TESTIMONIALS (tan bg) ─── */
+    .testimonials-section {
+      background: var(--bg-tan);
+      padding: 6rem 2rem;
+    }
+
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+
+    .testi-card {
+      background: #fff;
+      border: 1.5px solid rgba(13,12,24,0.07);
+      border-radius: 14px; padding: 1.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .testi-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(13,12,24,0.08);
+    }
+
+    .testi-stars { color: var(--orange); font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 1rem; }
+
+    .testi-text {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.7; margin-bottom: 1.5rem; font-style: italic;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testi-avatar {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-weight: 800;
+      font-size: 0.82rem; color: #fff;
+    }
+
+    .testi-name { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.875rem; color: var(--text); }
+    .testi-role { font-size: 0.73rem; color: var(--text-muted); }
+
+    /* ─── STATS ─── */
+    .stats-section { background: var(--bg-warm); padding: 5rem 2rem; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+
+    .stat-cell { background: var(--bg); padding: 2.5rem 2rem; text-align: center; }
+
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      letter-spacing: -0.05em;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+
+    .stat-number.orange { color: var(--orange); }
+
+    .stat-number.grad {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label { font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ─── ENGINES DARK SECTION ─── */
+    .engines-section {
+      background: var(--bg-dark);
+      color: #fff;
+      padding: 6rem 2rem;
+    }
+
+    .engines-section .section-h2 { color: #fff; margin-bottom: 1rem; }
+    .engines-section .section-sub { color: rgba(255,255,255,0.5); }
+
+    .engines-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+
+    .engine-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .engine-card:hover {
+      border-color: rgba(248,123,40,0.3);
+      background: rgba(248,123,40,0.04);
+    }
+
+    .engine-label {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35); margin-bottom: 1rem;
+    }
+
+    .engine-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800; font-size: 1.4rem;
+      letter-spacing: -0.03em; color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .engine-desc {
+      font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1.5rem;
+    }
+
+    .engine-platforms {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+
+    .ep-chip {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 0.3rem 0.7rem;
+      font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.5);
+    }
+
+    .engine-platform-icons {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .engine-platform-icon {
+      height: 52px;
+      width: 52px;
+      object-fit: contain;
+      border-radius: 8px;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    .engine-platform-icon:hover { opacity: 1; }
+
+    .engine-stat {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900; font-size: 2rem;
+      letter-spacing: -0.04em;
+    }
+
+    .engine-stat.orange { color: var(--orange); }
+    .engine-stat.coral  { color: #f4a76a; }
+
+    .engine-stat-sub { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+
+    /* ─── STEPS ─── */
+    .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+
+    .step-card {
+      padding: 2rem;
+      background: var(--bg-warm);
+      border: 1.5px solid var(--border);
+      border-radius: 14px; position: relative;
+    }
+
+    .step-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem; font-weight: 900;
+      color: rgba(13,12,24,0.06);
+      line-height: 1; margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .step-badge {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: rgba(248,123,40,0.1);
+      border: 1px solid rgba(248,123,40,0.2);
+      color: var(--orange);
+      font-size: 0.68rem; font-weight: 700;
+      padding: 0.25rem 0.6rem; border-radius: 4px;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+
+    .step-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      margin-bottom: 0.7rem; letter-spacing: -0.02em; color: var(--text);
+    }
+
+    .step-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ─── FEATURES GRID 6-UP ─── */
+    .features-6 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+
+    .f6-card {
+      padding: 1.75rem;
+      background: var(--bg-warm);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .f6-card:hover {
+      border-color: rgba(248,123,40,0.25);
+      transform: translateY(-2px);
+    }
+
+    .f6-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, rgba(248,123,40,0.12), rgba(239,69,81,0.06));
+      border: 1px solid rgba(248,123,40,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; margin-bottom: 1rem;
+    }
+
+    .f6-card h4 {
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem;
+      margin-bottom: 0.4rem; color: var(--text);
+    }
+
+    .f6-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── CTA DARK ─── */
+    .cta-dark {
+      background: var(--bg-dark);
+      color: #fff;
+      padding: 7rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-dark::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(248,123,40,0.12) 0%, rgba(139,50,196,0.06) 50%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .cta-dark h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 1.1;
+      margin-bottom: 1.25rem; position: relative;
+    }
+
+    .cta-dark p {
+      font-size: 1rem; color: rgba(255,255,255,0.55);
+      max-width: 440px; margin: 0 auto 2.5rem;
+      line-height: 1.75; position: relative;
+    }
+
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; position: relative; }
+
+    .btn-white {
+      background: #fff;
+      color: var(--text);
+      padding: 1rem 2.25rem;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800; font-size: 1rem;
+      text-decoration: none; letter-spacing: -0.01em;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 20px rgba(255,255,255,0.15);
+    }
+
+    .btn-white:hover { opacity: 0.92; transform: translateY(-2px); }
+
+    .btn-ghost-white {
+      background: transparent; color: rgba(255,255,255,0.75);
+      padding: 1rem 2rem; border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-ghost-white:hover { border-color: rgba(255,255,255,0.35); color: #fff; transform: translateY(-2px); }
+
+    .cta-fine { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 1rem; position: relative; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .footer-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+    .footer-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .footer-logo-text { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .two-col, .two-col.reverse { grid-template-columns: 1fr; gap: 2.5rem; }
+      .two-col.reverse .col-left { order: 1; }
+      .two-col.reverse .col-right { order: 2; }
+      .steps-grid, .testi-grid, .features-6 { grid-template-columns: 1fr; }
+      .engines-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .mockup-body { grid-template-columns: 1fr; }
+      .mockup-sidebar { display: none; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+    /* Typewriter reveal */
+    .typewriter-wrap {
+      display: inline-block;
+      white-space: nowrap;
+      vertical-align: bottom;
+      clip-path: inset(0 100% 0 0);
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.82em;
+      background: var(--grad);
+      margin-left: 5px;
+      vertical-align: -0.05em;
+      border-radius: 2px;
+      animation: tw-blink 0.85s ease-in-out infinite;
+    }
+    @keyframes tw-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="brand_assets/lucra-logo-transparent.png" alt="Lucra">
+      <span class="nav-logo-text">Lucra</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#results">Case Studies</a></li>
+      <li><a href="#testimonials">About</a></li>
+    </ul>
+    <a href="#book" class="btn-orange">Book my strategy call →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <!-- GUARANTEE BADGE – big and prominent -->
+    <div class="guarantee-badge">
+      <span class="guarantee-badge-dot"></span>
+      <span class="guarantee-badge-text">
+        <strong>30 qualified sales calls</strong> on your calendar in 60 days — or we work free until you do.
+      </span>
+    </div>
+
+    <h1>We help coaches &amp;<br>consultants fill their <span class="typewriter-wrap"><span class="grad-text">sales pipeline.</span><span class="typewriter-cursor"></span></span></h1>
+
+    <p class="hero-sub">Paid ads for immediate impact. Organic content on Meta for long-term sustainability. We run them together so your pipeline stays full this month — and every month after.</p>
+
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary-lg">Book my strategy call →</a>
+      <a href="#results" class="btn-ghost-dark">See client results</a>
+    </div>
+    <p class="hero-note">✓ Paid + Organic &nbsp;·&nbsp; ✓ In market within 7 days &nbsp;·&nbsp; ✓ Founder-led</p>
+
+    <div class="logo-ticker-wrap">
+      <div class="logo-ticker-label">Running on</div>
+      <div class="logo-ticker">
+        <div class="logo-ticker-track">
+          <img src="brand_assets/Facebook-Logosu.png" class="ticker-logo" alt="Facebook">
+          <img src="brand_assets/google_ads_logo_icon_171064.webp" class="ticker-logo" alt="Google Ads">
+          <img src="brand_assets/meta-logo.png" class="ticker-logo" alt="Meta">
+          <img src="brand_assets/Instagram_icon.png" class="ticker-logo" alt="Instagram">
+          <img src="brand_assets/GHL-Logo.svg" class="ticker-logo" style="border-radius:50%" alt="GoHighLevel">
+          <img src="brand_assets/Facebook-Logosu.png" class="ticker-logo" alt="Facebook">
+          <img src="brand_assets/google_ads_logo_icon_171064.webp" class="ticker-logo" alt="Google Ads">
+          <img src="brand_assets/meta-logo.png" class="ticker-logo" alt="Meta">
+          <img src="brand_assets/Instagram_icon.png" class="ticker-logo" alt="Instagram">
+          <img src="brand_assets/GHL-Logo.svg" class="ticker-logo" style="border-radius:50%" alt="GoHighLevel">
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-mockup-wrap">
+      <div class="hero-mockup-shadow"></div>
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <span class="mockup-dot mockup-dot-r"></span>
+          <span class="mockup-dot mockup-dot-y"></span>
+          <span class="mockup-dot mockup-dot-g"></span>
+          <div class="mockup-url">app.lucragency.com / dashboard</div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-sidebar">
+            <div class="mockup-sidebar-logo"><span class="msb-dot"></span> Lucra</div>
+            <div class="mockup-nav-item active"><span class="m-dot"></span> Overview</div>
+            <div class="mockup-nav-item"><span class="m-dot"></span> Campaigns</div>
+            <div class="mockup-nav-item"><span class="m-dot"></span> Leads</div>
+            <div class="mockup-nav-item"><span class="m-dot"></span> Calls booked</div>
+            <div class="mockup-nav-item"><span class="m-dot"></span> Creatives</div>
+            <div class="mockup-nav-item"><span class="m-dot"></span> Reports</div>
+          </div>
+          <div class="mockup-main">
+            <div class="mockup-header">
+              <div class="mockup-title">Campaign overview</div>
+              <div class="mockup-period">May 2026 · 47 days</div>
+            </div>
+            <div class="mockup-stats">
+              <div class="m-stat">
+                <div class="m-stat-label">Calls booked</div>
+                <div class="m-stat-value green">38</div>
+                <div class="m-stat-delta">↑ 8 this week</div>
+              </div>
+              <div class="m-stat">
+                <div class="m-stat-label">Show rate</div>
+                <div class="m-stat-value orange">84%</div>
+                <div class="m-stat-delta">↑ vs 70% avg</div>
+              </div>
+              <div class="m-stat">
+                <div class="m-stat-label">Cost / call</div>
+                <div class="m-stat-value">$56</div>
+                <div class="m-stat-delta">↓ $12 vs last wk</div>
+              </div>
+            </div>
+            <div class="mockup-chart">
+              <div class="m-chart-label">Calls booked per week</div>
+              <div class="chart-bars">
+                <div class="bar bar-purple" style="height:25%"></div>
+                <div class="bar bar-purple" style="height:38%"></div>
+                <div class="bar bar-purple" style="height:55%"></div>
+                <div class="bar bar-orange" style="height:72%"></div>
+                <div class="bar bar-green"  style="height:100%"></div>
+                <div class="bar bar-orange" style="height:88%"></div>
+                <div class="bar bar-orange" style="height:82%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO ENGINES -->
+  <section class="engines-section" id="how">
+    <div class="container">
+      <div style="max-width:560px; margin-bottom:1rem;">
+        <span class="eyebrow" style="color:rgba(248,123,40,0.8)">The system</span>
+        <h2 class="section-h2">Two engines.<br>One reliable pipeline.</h2>
+        <p class="section-sub" style="margin-top:1rem;">Paid ads for immediate impact. Organic content for long-term trust. Together they compound month over month.</p>
+      </div>
+      <div class="engines-grid">
+        <div class="engine-card">
+          <div class="engine-label">Engine 1</div>
+          <div class="engine-title">Paid Ads Engine</div>
+          <p class="engine-desc">Scroll-stopping Meta ads engineered specifically for coaches and consultants. We write the copy, design the creative, and optimise every week.</p>
+          <div class="engine-platform-icons">
+            <img src="brand_assets/google_ads_logo_icon_171064.webp" class="engine-platform-icon" alt="Google Ads">
+            <img src="brand_assets/meta-logo.png" class="engine-platform-icon" alt="Meta">
+          </div>
+          <div class="engine-stat orange">+30</div>
+          <div class="engine-stat-sub">booked calls / 60 days</div>
+        </div>
+        <div class="engine-card">
+          <div class="engine-label">Engine 2</div>
+          <div class="engine-title">Organic Content Engine</div>
+          <p class="engine-desc">Consistent, authority-building content on Instagram and Facebook that warms audiences, builds trust, and converts them over time.</p>
+          <div class="engine-platform-icons">
+            <img src="brand_assets/Facebook-Logosu.png" class="engine-platform-icon" style="height:72px;width:72px;" alt="Facebook">
+            <img src="brand_assets/Instagram_icon.png" class="engine-platform-icon" alt="Instagram">
+          </div>
+          <div class="engine-stat orange">Long-term</div>
+          <div class="engine-stat-sub">compounding authority + inbound</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES 6-UP -->
+  <section style="background:var(--bg-warm)">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <span class="eyebrow">Full scope</span>
+        <h2 class="section-h2">Full Funnel Buildout —<br>everything included.</h2>
+      </div>
+      <div class="features-6">
+        <div class="f6-card">
+          <div class="f6-icon">📣</div>
+          <h4>Paid Ads Engine</h4>
+          <p>Meta + Google campaigns. We write, design, and launch. Weekly optimisation included.</p>
+        </div>
+        <div class="f6-card">
+          <div class="f6-icon">🌱</div>
+          <h4>Organic Content Engine</h4>
+          <p>Scripted Reels, carousels, and stories on Instagram and Facebook. Frameworks, weekly optimisation. Live in 10 days.</p>
+        </div>
+        <div class="f6-card">
+          <div class="f6-icon">📬</div>
+          <h4>Inbound DM + Reply System</h4>
+          <p>Scripts and automations that turn social engagement and DM inquiries into booked calls on your calendar.</p>
+        </div>
+        <div class="f6-card">
+          <div class="f6-icon">🎯</div>
+          <h4>Organic Content Strategy</h4>
+          <p>Direction tied to direct response goals. Not follower vanity — every piece of content exists to convert.</p>
+        </div>
+        <div class="f6-card">
+          <div class="f6-icon">⚡</div>
+          <h4>Risk-Reversal Guarantee</h4>
+          <p>30 calls in 60 days, or we keep working free. You risk nothing — we risk everything.</p>
+        </div>
+        <div class="f6-card">
+          <div class="f6-icon">📊</div>
+          <h4>Full Transparency Dashboard</h4>
+          <p>Live reporting on spend, leads, calls, cost-per-call, and close rate. No surprises. No black box.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONE-FOR-YOU INTRO -->
+  <section style="background:var(--bg-warm);">
+    <div class="container">
+      <div class="two-col">
+        <div class="col-left">
+          <span class="eyebrow">What we do</span>
+          <h2 class="section-h2" style="margin-bottom:1.25rem;">We're a done-for-you growth team for coaches &amp; consultants.</h2>
+          <p class="section-sub" style="margin-bottom:2rem;">We combine paid ads for immediate impact with organic content on Meta (Instagram + Facebook) for long-term sustainability — and put 30 qualified sales calls on your calendar in 60 days, or we keep working free until we do.</p>
+          <div class="result-list">
+            <div class="result-row">
+              <div class="rr-icon">🎯</div>
+              <div class="rr-content">
+                <h4>Only speak to qualified prospects</h4>
+                <p>Our 3-step funnel pre-qualifies every lead on price, fit, and urgency before they ever see your calendar.</p>
+              </div>
+            </div>
+            <div class="result-row">
+              <div class="rr-icon">⚡</div>
+              <div class="rr-content">
+                <h4>In market within 7 days</h4>
+                <p>We write, design, and launch your entire campaign in the first week. No endless back-and-forth.</p>
+              </div>
+            </div>
+            <div class="result-row">
+              <div class="rr-icon">📊</div>
+              <div class="rr-content">
+                <h4>Full transparency, always</h4>
+                <p>Live dashboard shows spend, leads, calls booked, and cost-per-call in real time. No black box.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="visual-panel">
+            <div class="visual-panel-inner">
+              <div class="vp-tag">Live client result</div>
+              <div class="vp-metric">38 calls</div>
+              <div class="vp-metric-sub">booked in 47 days · $56 per call</div>
+              <div class="pipeline-stages">
+                <div class="ps">
+                  <div class="ps-label">Impressions</div>
+                  <div class="ps-count">42k</div>
+                </div>
+                <div class="ps">
+                  <div class="ps-label">Clicks</div>
+                  <div class="ps-count">1.8k</div>
+                </div>
+                <div class="ps active">
+                  <div class="ps-label">Leads</div>
+                  <div class="ps-count">214</div>
+                </div>
+                <div class="ps done">
+                  <div class="ps-label">Calls</div>
+                  <div class="ps-count">38</div>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <div class="mini-stat">
+                  <div class="mini-stat-label">Show rate</div>
+                  <div class="mini-stat-value green">84%</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-label">Close rate</div>
+                  <div class="mini-stat-value orange">31%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE 30/60 GUARANTEE -->
+  <div class="guarantee-section" id="results">
+    <div class="container">
+      <div class="guarantee-tag">The 30/60 Guarantee</div>
+      <h2>If we don't deliver 30 qualified sales calls within 60 days,<br>you own the system, creative, and assets we built — and no further commitment.</h2>
+      <p>We put skin in the game. No vanity metrics.</p>
+      <a href="#book" class="btn-orange" style="padding:0.9rem 2rem;font-size:1rem;">Claim your guarantee →</a>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3.5rem;">
+        <span class="eyebrow">Client results</span>
+        <h2 class="section-h2">Coaches &amp; consultants,<br>at the heart of the Lucra ecosystem.</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Lucra rebuilt my whole front end. They handled the ads, the funnel, the content, the DMs — I just showed up to the calls. We hit 30 by week 7 and had three paying clients. It's the first time I've felt like I actually have a business."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TF</div>
+            <div>
+              <div class="testi-name">Tom F.</div>
+              <div class="testi-role">Business coach · <strong style="color:var(--orange)">38 calls / 60 days</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I came in with zero strategy and no idea what to post. They turned my IG and Facebook into an actual lead machine — I signed my first client completely and signed six clients in six weeks."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">CC</div>
+            <div>
+              <div class="testi-name">Cal C.</div>
+              <div class="testi-role">Sales consultant · <strong style="color:var(--orange)">0 → 6 clients in 6 wks</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I've been working with Lucra for a few months now after switching SMMs and have nothing but great things to say about them. They've helped me manage my social media accounts, ads through meta, build a robust CRM and ad funnel website, as well as many other items. Since launching our ad strategy, I've had countless booked calls for my coaching business and a very high close rate on signing athletes. The results have been better than expected and we are only continuing to see improvement on my conversion rates and revenue growth."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PE</div>
+            <div>
+              <div class="testi-name">Paul E.</div>
+              <div class="testi-role">Leadership coach · <strong style="color:var(--orange)">42 calls / 58 days</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-number grad">42</div>
+          <div class="stat-label">Calls booked<br>in 58 days (record)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number orange">93%</div>
+          <div class="stat-label">Clients hit 30 calls<br>before day 60</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number grad">0→6</div>
+          <div class="stat-label">New clients<br>in 6 weeks (avg)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number orange">+50%</div>
+          <div class="stat-label">Average increase<br>in call volume</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section style="background:var(--bg)">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3.5rem;">
+        <span class="eyebrow">The process</span>
+        <h2 class="section-h2">From onboarding to booked<br>calls in 14 days</h2>
+        <p class="section-sub" style="max-width:460px;margin:1rem auto 0;">No questionnaires. No committees. One call and we're building.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-badge">Day 1–2</div>
+          <h3>Onboarding call</h3>
+          <p>We learn your offer, audience, price point, and goals. One focused call, then we disappear and get to work.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-badge">Day 3–14</div>
+          <h3>Build &amp; launch</h3>
+          <p>We write the ads, design the creatives, build the funnel, and go live — all within the first week.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-badge">Day 15–60</div>
+          <h3>Optimise &amp; scale</h3>
+          <p>Weekly reviews, A/B tests, budget optimisation. We compound until you hit 30 booked calls — or work free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA DARK -->
+  <section class="cta-dark" id="book">
+    <h2>We onboard <span class="grad-text">6 coaches</span><br>per month.</h2>
+    <p>Cap exists to protect our clients. Book a free 30-min strategy call — we'll tell you exactly what it would take to hit 30 qualified sales calls in 60 days.</p>
+    <div class="cta-actions">
+      <a href="mailto:milan@lucragency.com" class="btn-orange" style="padding:1rem 2.25rem;font-size:1rem;">Book my strategy call →</a>
+      <a href="#testimonials" class="btn-ghost-white">Read client results</a>
+    </div>
+    <p class="cta-fine">No commitment. No pushy sales. Just an honest conversation.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">
+        <img src="brand_assets/lucra-logo-transparent.png" alt="Lucra">
+        <span class="footer-logo-text">Lucra</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#results">Case Studies</a></li>
+        <li><a href="#testimonials">About</a></li>
+        <li><a href="mailto:milan@lucragency.com">Book a call</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Lucra. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var wrap = document.querySelector('.typewriter-wrap');
+    if (!wrap) return;
+
+    // Force reflow so initial clip-path is applied before transition
+    wrap.getBoundingClientRect();
+
+    setTimeout(function () {
+      wrap.style.transition = 'clip-path 2s cubic-bezier(0.16, 1, 0.3, 1)';
+      wrap.style.clipPath = 'inset(0 0% 0 0)';
+    }, 350);
+  });
+</script>
+</body>
+</html>
