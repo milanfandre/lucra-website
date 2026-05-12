@@ -330,10 +330,11 @@
 
     .logo-ticker-track {
       display: flex;
-      gap: 7rem;
+      gap: 0;
       animation: ticker-scroll 14s linear infinite;
       width: max-content;
       align-items: center;
+      will-change: transform;
     }
 
     @keyframes ticker-scroll {
@@ -349,6 +350,7 @@
       filter: grayscale(0.1);
       transition: opacity 0.2s ease;
       flex-shrink: 0;
+      margin-right: 7rem;
     }
 
     .ticker-logo:hover { opacity: 1; }
@@ -989,6 +991,7 @@
     @media (max-width: 768px) {
       .mobile-br { display: inline; }
       .hide-mobile { display: none; }
+      .logo-ticker-track { animation-duration: 8s; }
       .guarantee-badge {
         border-radius: 16px;
         padding: 0.5rem 1rem;
