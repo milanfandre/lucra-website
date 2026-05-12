@@ -324,18 +324,9 @@
       overflow: hidden;
       position: relative;
       width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     }
-
-    .logo-ticker::before,
-    .logo-ticker::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0; width: 100px; z-index: 2;
-      pointer-events: none;
-    }
-
-    .logo-ticker::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-    .logo-ticker::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
 
     .logo-ticker-track {
       display: flex;
