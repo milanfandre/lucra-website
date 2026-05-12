@@ -331,18 +331,11 @@
     .logo-ticker-track {
       display: flex;
       gap: 0;
-      animation: ticker-scroll 14s linear infinite;
       width: max-content;
       align-items: center;
       will-change: transform;
-      transform: translate3d(0, 0, 0);
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-    }
-
-    @keyframes ticker-scroll {
-      from { transform: translate3d(0, 0, 0); }
-      to   { transform: translate3d(-50%, 0, 0); }
     }
 
     .ticker-logo {
@@ -994,7 +987,7 @@
     @media (max-width: 768px) {
       .mobile-br { display: inline; }
       .hide-mobile { display: none; }
-      .logo-ticker-track { animation-duration: 8s; }
+
       .guarantee-badge {
         border-radius: 16px;
         padding: 0.5rem 1rem;
@@ -1496,6 +1489,27 @@
       });
     }
   });
+</script>
+
+<script>
+  (function () {
+    const track = document.querySelector('.logo-ticker-track');
+    if (!track) return;
+    let pos = 0;
+    let lastTs = null;
+    function speed() { return window.innerWidth <= 768 ? 90 : 60; } // px/s
+    function tick(ts) {
+      if (lastTs === null) lastTs = ts;
+      const dt = Math.min(ts - lastTs, 50); // cap delta to avoid jump after tab switch
+      lastTs = ts;
+      pos -= speed() * (dt / 1000);
+      const half = track.scrollWidth / 2;
+      if (pos <= -half) pos += half;
+      track.style.transform = 'translate3d(' + pos + 'px,0,0)';
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
 </script>
 </body>
 </html>
